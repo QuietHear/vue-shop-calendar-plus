@@ -1,0 +1,31 @@
+{
+  "name": "vue-shop-calendar-plus",
+  "description": "工作日历 vue3版",
+  "version": "0.0.1",
+  "author": "aFei <1106728884@qq.com>",
+  "license": "MIT",
+  "main": "dist/vue-shop-calendar-plus.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-shop-calendar-plus.mjs",
+      "require": "./dist/vue-shop-calendar-plus.umd.js"
+    },
+    "./index.css": "./dist/style.css"
+  },
+  "private": false,
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "Vue3",
+    "calendar"
+  ],
+  "homepage": "https://github.com/QuietHear",
+  "repository": "https://github.com/QuietHear/vue-shop-calendar-plus",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.2.0",
+    "sass": "^1.53.0",
+    "vite": "^3.2.3",
+    "vue": "^3.2.41"
+  }
+}
