@@ -12,71 +12,67 @@
 	app.use(vueShopCalendarPlus);
 
 
+## 0. 可改动样式变量
+* `--top-active-color`：#db3218;-->顶部按钮触摸颜色
+
+* `--border-color`：#ebeef5;-->表格边框颜色
+
+* `--out-width`：90%;-->组件宽度
+
+* `--item-height`：85px;-->表格项高度
+
+* `--item-active-bg-color`：#d7e8f8;-->表格项触摸颜色
+
+* `--today-color`：#b31552;-->今天圈的颜色
+
+* `--rest-clor`：#f39f03;-->本月周末字体颜色
+
+* `--rest-dis-clor`：#fed891;-->非本月周末字体颜色
+
+* `--dis-color`：#c0c4cc;-->非本月非周末字体颜色
+
+* `--diy-work-color`：#f30a0a;-->自定义加班日颜色
+
+* `--diy-rest-color`：#26c629;-->自定义节假日颜色
+
+
 ## 1. 参数
-* `showBtn`：是否显示点击按钮-->Boolean;非必传;默认*true*
+* `v-model`：绑定当前时间-->String;非必传;默认*''*
 
-* `space`：抠图到图形边沿的距离-->Number;非必传;默认*10*
+* `i18n`：开启国际化-->Boolean;非必传;默认*false*
 
-* `imgList`：资源图片路径集合-->Array;非必传;默认使用组件内置的10张图片
->
-	// 例子
-	:imgList="[url,url,url...]"
->
+* `firstDay`：周首日，只能是1-7-->Number;非必传;默认*1*
 
-* `getFunction`：通过接口获取初始化图片相关信息-->Function;必传
+* `props`：特殊日期键值配置-->Object;非必传;默认*{}*
 >
-	// 例子
-    const test = (obj) => {
-		// 这个地方的obj是组件内部传入，参数分别代表
-		// r:1; eg:圆弧最大半径，无用参数
-		// width1:1; eg:假数据，无用参数
-		// width2:1; eg:x方向最小值
-		// width3:1; eg:x方向最大值
-		// width4:1; eg:假数据，无用参数
-		// height1:1; eg:y方向最小值
-		// height2:1; eg:假数据，无用参数
-		// height3:1; eg:假数据，无用参数
-		// height4:1; eg:y方向最大值
-    	return new Promise((resolve) => {
-        	APIUrl(obj).then((res) => {
-				// 接口返回的数据中请包含以下信息
-				// code:''; eg:是否请求成功，只有为200才算成功
-				// data:{  eg:返回的必要值
-				//   width:1; eg:抠图x方向最终的值，需要后端或者前端存起来后面做校验，这个地方需进行加密(先平方再减64，等到的结果转换为8进制，然后使用btoa加密)
-				//   height:1; eg:假数据，建议使用obj.height2，无用参数
-				//   x:1; eg:假数据，建议使用obj.width4，需要与width相同的方法加密，无用参数
-				//   y:1; eg:抠图y方向最终的值
-				//};
-				// msg/message:''; eg:错误提示消息
-        		resolve(res);
-        	});
-    	});
-    };
+	// 配置项说明
+	workDayKey:'' // 工作日键值，空值时当普通数组处理
+	restDayKey:'' // 节假日键值，空值时当普通数组处理
+	diyDayDayKey:'day' // 自定义节日日期键值
+	diyDayDesKey:'des' // 自定义节日描述键值
 >
 
-* `setFunction`：通过接口提交校验结果-->Function;必传
+* `workDay`：法定加班日-->Array;非必传;默认*[]*
 >
-	// 例子
-    const test = (obj) => {
-		// 这个地方的obj是组件内部传入，参数分别代表
-		// x:''; eg:加密后的移动距离，需要解密（btoa先解密，再将4进制转换为10进制，然后加16再开方）
-		// time:1; eg:移动花费的时间
-    	return new Promise((resolve) => {
-        	APIUrl(obj).then((res) => {
-				// 接口返回的数据中请包含以下信息
-				// code:''; eg:是否请求成功，200为成功，123为拼接错误，其他为服务器错误
-				// data:{  eg:返回的必要值
-				//   percentage:1; eg:超越人数百分比，可以使用100 - Math.round((obj.time / 5) * 100)计算，允许为负数，负数代表超时，不建议把超时标准弄得太小
-				//};
-				// msg/message:''; eg:错误提示消息
-        		resolve(res);
-        	});
-    	});
-    };
+	日期的值格式只能为YYYY-MM-DD
 >
 
-* `@change`：验证结果改变时触发返回事件-->第一个参数返回true/false
+* `restDay`：法定休息日-->Array;非必传;默认*[]*
+>
+	日期的值格式只能为YYYY-MM-DD
+>
+
+* `diyDay`：自定义节日-->Array;非必传;默认*[]*
+>
+	日期的值格式只能为YYYY-MM-DD
+>
+
+* `@change`：当选中日期改变时触发-->第一个参数返回选中日期的详情，第二个参数返回月组数据的开始和结束时间
 
 
-## 2. 方法
-* `initPop`：手动开始触发验证-->建议showBtn为false时使用
+## 2. 插槽
+* `dateCell`：替换默认展示的自定义节日列表
+>
+	date:返回当前节点的日期详情
+	data:返回当前节点的一些判断（当天/选中/周末/在本月）
+>
