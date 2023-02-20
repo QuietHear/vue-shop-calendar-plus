@@ -1,7 +1,7 @@
 {
   "name": "vue-shop-calendar-plus",
   "description": "工作日历 vue3版",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "aFei <1106728884@qq.com>",
   "license": "MIT",
   "main": "dist/vue-shop-calendar-plus.umd.js",
@@ -14,7 +14,9 @@
   },
   "private": false,
   "scripts": {
-    "build": "vite build"
+    "init": "npm install",
+    "build": "vite build",
+    "push": "npm publish"
   },
   "keywords": [
     "Vue3",
@@ -25,6 +27,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.2.0",
     "sass": "^1.53.0",
+    "unplugin-auto-import": "^0.14.3",
     "vite": "^3.2.3",
     "vue": "^3.2.41"
   }
