@@ -35,6 +35,10 @@
 
 * `--diy-rest-color`：#26c629;-->自定义节假日颜色
 
+* `--holiday-color`：#b513e7;-->本月内置节假日颜色
+
+* `--holiday-dis-color`：#b613e74e;-->非本月内置节假日颜色
+
 
 ## 1. 参数
 * `v-model`：绑定当前时间-->String;非必传;默认*''*
@@ -51,6 +55,8 @@
 	diyDayDayKey:'day' // 自定义节日日期键值
 	diyDayDesKey:'des' // 自定义节日描述键值
 >
+
+* `hidSolar`：隐藏农历-->Boolean;非必传;默认*false*
 
 * `workDay`：法定加班日-->Array;非必传;默认*[]*
 >

@@ -4,7 +4,7 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2022-11-23 17:05:36
+ * @LastEditTime: 2023-07-28 17:44:49
 */
 .vue-shop-calendar-plus {
   --top-active-color    : #db3218;
@@ -18,6 +18,8 @@
   --dis-color           : #c0c4cc;
   --diy-work-color      : #f30a0a;
   --diy-rest-color      : #26c629;
+  --holiday-color       : #b513e7;
+  --holiday-dis-color   : #b613e74e;
   width                 : var(--out-width);
   margin                : 0 auto;
 
@@ -122,6 +124,14 @@
       // 不在当前月
       &.not-in-month {
         color: var(--dis-color);
+
+        .item-tit {
+          .solar-day {
+            &.else {
+              color: var(--holiday-dis-color);
+            }
+          }
+        }
       }
 
       // 今天
@@ -151,16 +161,27 @@
       }
 
       .item-tit {
-        font-size: 16px;
-        position : relative;
+        font-size  : 16px;
+        display    : flex;
+        align-items: center;
+        position   : relative;
+
+        .solar-day {
+          line-height: 1;
+          margin-left: 8px;
+
+          &.else {
+            color: var(--holiday-color);
+          }
+        }
 
         .work-txt,
         .rest-txt {
-          display       : inline-block;
-          margin-left   : 20px;
-          font-size     : 12px;
-          vertical-align: top;
-          color         : var(--diy-work-color);
+          margin-left: 20px;
+          font-size  : 12px;
+          color      : var(--diy-work-color);
+          position   : relative;
+          top        : -5px;
         }
 
         .rest-txt {

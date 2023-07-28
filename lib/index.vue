@@ -4,7 +4,7 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-02-20 14:58:10
+ * @LastEditTime: 2023-07-28 17:48:58
 */
 <template>
   <div class="vue-shop-calendar-plus">
@@ -41,28 +41,29 @@
   item.valFullTime === selectDay.valFullTime
     ? null
     : changeTime(item, 1)
-">
+  ">
         <div class="item-tit">
           {{ item.day }}
+          <div :class="['solar-day', item.solarData.isHoliday ? 'else' : '']" v-if="!hidSolar">
+            {{ item.solarData.outStr }}
+          </div>
           <!-- 加班日标记 -->
-          <div class="work-txt" v-if="
-            nameSet.workDayKey
-              ? workDay.findIndex((one) => {
-                return one[nameSet.workDayKey] === item.valFullTime;
-              }) !== -1
-              : workDay.indexOf(item.valFullTime) !== -1
-          ">
-            {{ i18n? "work": "班" }}
+          <div class="work-txt" v-if="nameSet.workDayKey
+            ? workDay.findIndex((one) => {
+              return one[nameSet.workDayKey] === item.valFullTime;
+            }) !== -1
+            : workDay.indexOf(item.valFullTime) !== -1
+            ">
+            {{ i18n ? "work" : "班" }}
           </div>
           <!-- 休息日标记 -->
-          <div class="rest-txt" v-if="
-            nameSet.restDayKey
-              ? restDay.findIndex((one) => {
-                return one[nameSet.restDayKey] === item.valFullTime;
-              }) !== -1
-              : restDay.indexOf(item.valFullTime) !== -1
-          ">
-            {{ i18n? "rest": "休" }}
+          <div class="rest-txt" v-if="nameSet.restDayKey
+            ? restDay.findIndex((one) => {
+              return one[nameSet.restDayKey] === item.valFullTime;
+            }) !== -1
+            : restDay.indexOf(item.valFullTime) !== -1
+            ">
+            {{ i18n ? "rest" : "休" }}
           </div>
         </div>
         <div class="item-div-content">
@@ -85,6 +86,7 @@
   </div>
 </template>
 <script setup>
+import solarExchange from "./js/solarExchange";
 const emit = defineEmits(["update:modelValue", "change"]);
 const props = defineProps({
   // 绑定当前时间
@@ -108,6 +110,11 @@ const props = defineProps({
     default: () => {
       return {};
     },
+  },
+  // 隐藏农历
+  hidSolar: {
+    type: Boolean,
+    default: false,
   },
   // 法定加班日
   workDay: {
@@ -190,10 +197,11 @@ const dealOneDay = (time) => {
     weekDay: lin.getDay(),
     fullTime: `${lin.getFullYear()}-${lin.getMonth() + 1}-${lin.getDate()}`,
     valFullTime: `${lin.getFullYear()}-${lin.getMonth() + 1 > 9
-        ? lin.getMonth() + 1
-        : "0" + (lin.getMonth() + 1)
+      ? lin.getMonth() + 1
+      : "0" + (lin.getMonth() + 1)
       }-${lin.getDate() > 9 ? lin.getDate() : "0" + lin.getDate()}`,
     inMonth: false,
+    solarData: solarExchange(lin.getFullYear(), lin.getMonth() + 1, lin.getDate())
   };
 };
 // 获取周头排序
@@ -250,6 +258,7 @@ const getMonthData = (year, month) => {
     let obj = dealOneDay(`${afterYear}-${afterMonth}-${i + 1}`);
     monthData.value.push(obj);
   }
+  console.log(monthData.value, 'monthData.value');
 };
 // 校验当前要改变的时间
 const checkTime = (time) => {
