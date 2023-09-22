@@ -1,6 +1,8 @@
 # 工作日历（vue3版）
 ***vue3版本*** | [**vue2版本**](https://github.com/QuietHear/vue-shop-calendar '右键新窗口浏览')
 
+## 预览
+	clone项目后npm run preview即可
 
 ## 安装
 	npm i vue-shop-calendar-plus
@@ -17,11 +19,19 @@
 
 * `--border-color`：#ebeef5;-->表格边框颜色
 
+* `--border-color-s`：transparent;-->表格边框颜色--简易模式
+
 * `--out-width`：90%;-->组件宽度
+
+* `--out-width-s`：100%;-->组件宽度--简易模式
 
 * `--item-height`：85px;-->表格项高度
 
+* `--item-height-s`：22px;-->表格项高度--简易模式
+
 * `--item-active-bg-color`：#d7e8f8;-->表格项触摸颜色
+
+* `--item-active-bg-color-s`：#0068FF;-->表格项触摸颜色--简易模式
 
 * `--today-color`：#b31552;-->今天圈的颜色
 
@@ -43,6 +53,10 @@
 ## 1. 参数
 * `v-model`：绑定当前时间-->String;非必传;默认*''*
 
+* `control`：受控模式-->Boolean;非必传;默认*false*
+
+* `simple`：简易模式-->Boolean;非必传;默认*false*
+
 * `i18n`：开启国际化-->Boolean;非必传;默认*false*
 
 * `firstDay`：周首日，只能是1-7-->Number;非必传;默认*1*
@@ -56,24 +70,24 @@
 	diyDayDesKey:'des' // 自定义节日描述键值
 >
 
-* `hidSolar`：隐藏农历-->Boolean;非必传;默认*false*
+* `hidSolar`：隐藏农历（简易模式不显示）-->Boolean;非必传;默认*false*
 
-* `workDay`：法定加班日-->Array;非必传;默认*[]*
+* `workDay`：法定加班日（简易模式不显示）-->Array;非必传;默认*[]*
 >
 	日期的值格式只能为YYYY-MM-DD
 >
 
-* `restDay`：法定休息日-->Array;非必传;默认*[]*
+* `restDay`：法定休息日（简易模式不显示）-->Array;非必传;默认*[]*
 >
 	日期的值格式只能为YYYY-MM-DD
 >
 
-* `diyDay`：自定义节日-->Array;非必传;默认*[]*
+* `diyDay`：自定义节日（简易模式不显示）-->Array;非必传;默认*[]*
 >
 	日期的值格式只能为YYYY-MM-DD
 >
 
-* `@change`：当选中日期改变时触发-->第一个参数返回选中日期的详情，第二个参数返回月组数据的开始和结束时间
+* `@change`：当选中日期改变时触发（受控模式不触发）-->第一个参数返回选中日期的详情，第二个参数返回月组数据的开始和结束时间
 
 
 ## 2. 插槽

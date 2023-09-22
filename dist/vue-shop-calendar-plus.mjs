@@ -1,5 +1,5 @@
-import { ref as $, computed as Z, watch as q, openBlock as v, createElementBlock as g, createElementVNode as m, createTextVNode as A, toDisplayString as p, unref as r, createCommentVNode as I, Fragment as z, renderList as L, normalizeClass as B, renderSlot as J } from "vue";
-const _ = [
+import { ref as $, computed as J, watch as E, openBlock as y, createElementBlock as D, normalizeClass as L, createElementVNode as S, createTextVNode as O, toDisplayString as h, unref as x, createCommentVNode as C, Fragment as B, renderList as j, renderSlot as Q } from "vue";
+const N = [
   19416,
   19168,
   42352,
@@ -222,7 +222,7 @@ const _ = [
   //2090-2099
   54560
   //2100
-], Q = [
+], X = [
   "9778397bd097c36b0b6fc9274c91aa",
   "97b6b97bd19801ec9210c965cc920e",
   "97bcf97c3598082c95f8c965cc920f",
@@ -424,7 +424,7 @@ const _ = [
   "7ec967f0e37f14998082b0787b06bd",
   "7f07e7f0e47f531b0723b0b6fb0721",
   "7f0e27f1487f531b0b0bb0b6fb0722"
-], X = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"], b0 = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"], E = ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"], e0 = ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"], f0 = ["日", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"], c0 = ["初", "十", "廿", "卅"], a0 = ["正", "二", "三", "四", "五", "六", "七", "八", "九", "十", "冬", "腊"], K = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"], O = {
+], _ = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"], b0 = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"], U = ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"], e0 = ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"], f0 = ["日", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"], c0 = ["初", "十", "廿", "卅"], a0 = ["正", "二", "三", "四", "五", "六", "七", "八", "九", "十", "冬", "腊"], K = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"], W = {
   "1.1": "春节",
   "1.15": "元宵节",
   "5.5": "端午节",
@@ -432,7 +432,7 @@ const _ = [
   "8.15": "中秋节",
   "9.9": "重阳节",
   "12.30": "除夕"
-}, U = {
+}, G = {
   "1.1": "元旦",
   "2.14": "情人节",
   "3.8": "妇女节",
@@ -443,12 +443,12 @@ const _ = [
 }, t0 = (b) => {
   let t = 348;
   for (let a = 32768; a > 8; a >>= 1)
-    t += _[b - 1900] & a ? 1 : 0;
-  return t + G(b);
-}, G = (b) => P(b) ? _[b - 1900] & 65536 ? 30 : 29 : 0, P = (b) => _[b - 1900] & 15, d0 = (b, t) => t > 12 || t < 1 ? -1 : _[b - 1900] & 65536 >> t ? 30 : 29, C = (b) => X[b % 10] + b0[b % 12], j = (b, t) => {
+    t += N[b - 1900] & a ? 1 : 0;
+  return t + R(b);
+}, R = (b) => Z(b) ? N[b - 1900] & 65536 ? 30 : 29 : 0, Z = (b) => N[b - 1900] & 15, l0 = (b, t) => t > 12 || t < 1 ? -1 : N[b - 1900] & 65536 >> t ? 30 : 29, V = (b) => _[b % 10] + b0[b % 12], H = (b, t) => {
   if (b < 1900 || b > 2100 || t < 1 || t > 24)
     return -1;
-  const a = Q[b - 1900], f = [
+  const a = X[b - 1900], f = [
     parseInt("0x" + a.substr(0, 5)).toString(),
     parseInt("0x" + a.substr(5, 5)).toString(),
     parseInt("0x" + a.substr(10, 5)).toString(),
@@ -482,10 +482,10 @@ const _ = [
     f[5].substr(4, 2)
   ];
   return parseInt(o[t - 1]);
-}, l0 = (b) => e0[(b - 4) % 12], s0 = (b) => {
+}, d0 = (b) => e0[(b - 4) % 12], s0 = (b) => {
   const t = parseInt(b / 1e3), a = parseInt(b % 1e3 / 100), f = parseInt(b % 100 / 10), o = b % 10;
   return K[t] + K[a] + K[f] + K[o] + "年";
-}, W = (b) => b > 12 || b < 1 ? -1 : a0[b - 1] + "月", H = (b) => {
+}, P = (b) => b > 12 || b < 1 ? -1 : a0[b - 1] + "月", A = (b) => {
   let t;
   switch (b) {
     case 10:
@@ -506,53 +506,69 @@ const _ = [
     return -1;
   let f = /* @__PURE__ */ new Date();
   b && (f = new Date(b, t - 1, a));
-  let o = 1900, x = 0;
+  let o = 1900, r = 0;
   b = f.getFullYear(), t = f.getMonth() + 1, a = f.getDate();
-  let l = (Date.UTC(f.getFullYear(), f.getMonth(), f.getDate()) - Date.UTC(1900, 0, 31)) / 864e5;
-  for (; o < 2101 && l > 0; o++)
-    x = t0(o), l -= x;
-  l < 0 && (l += x, o--);
-  let h = P(o), D = !1, n = 1;
-  for (; n < 13 && l > 0; n++)
-    h > 0 && n == h + 1 && D == !1 ? (--n, D = !0, x = G(o)) : x = d0(o, n), D == !0 && n == h + 1 && (D = !1), l -= x;
-  l == 0 && h > 0 && n == h + 1 && (D ? D = !1 : (D = !0, --n)), l < 0 && (l += x, --n);
-  const i = l + 1;
-  let Y = t - 1, N = j(b, 3), F = C(b - 4), T = new Date(b, 1, N).getTime();
-  new Date(b, Y, a).getTime() < T && (F = C(b - 5));
-  const V = j(b, t * 2 - 1), d = j(b, t * 2);
-  let c = C((b - 1900) * 12 + t + 11);
-  a >= V && (c = C((b - 1900) * 12 + t + 12));
+  let d = (Date.UTC(f.getFullYear(), f.getMonth(), f.getDate()) - Date.UTC(1900, 0, 31)) / 864e5;
+  for (; o < 2101 && d > 0; o++)
+    r = t0(o), d -= r;
+  d < 0 && (d += r, o--);
+  let g = Z(o), v = !1, n = 1;
+  for (; n < 13 && d > 0; n++)
+    g > 0 && n == g + 1 && v == !1 ? (--n, v = !0, r = R(o)) : r = l0(o, n), v == !0 && n == g + 1 && (v = !1), d -= r;
+  d == 0 && g > 0 && n == g + 1 && (v ? v = !1 : (v = !0, --n)), d < 0 && (d += r, --n);
+  const i = d + 1;
+  let Y = t - 1, z = H(b, 3), w = V(b - 4), T = new Date(b, 1, z).getTime();
+  new Date(b, Y, a).getTime() < T && (w = V(b - 5));
+  const I = H(b, t * 2 - 1), l = H(b, t * 2);
+  let c = V((b - 1900) * 12 + t + 11);
+  a >= I && (c = V((b - 1900) * 12 + t + 12));
   let e = !1, u = "";
-  V == a && (e = !0, u = E[t * 2 - 2]), d == a && (e = !0, u = E[t * 2 - 1]);
-  const s = Date.UTC(b, Y, 1, 0, 0, 0, 0) / 864e5 + 25567 + 10, k = C(s + a - 1);
-  let w = !1;
-  return (U[t + "." + a] || O[n + "." + i]) && (w = !0), {
-    animal: l0(o),
+  I == a && (e = !0, u = U[t * 2 - 2]), l == a && (e = !0, u = U[t * 2 - 1]);
+  const s = Date.UTC(b, Y, 1, 0, 0, 0, 0) / 864e5 + 25567 + 10, k = V(s + a - 1);
+  let p = !1;
+  return (G[t + "." + a] || W[n + "." + i]) && (p = !0), {
+    animal: d0(o),
     cnYear: s0(o),
-    cnMonth: (D && h === n ? "闰" : "") + W(n),
-    cnDay: H(i),
-    gzYear: F + "年",
+    cnMonth: (v && g === n ? "闰" : "") + P(n),
+    cnDay: A(i),
+    gzYear: w + "年",
     gzMonth: c + "月",
     gzDay: k + "日",
-    isLeap: D,
+    isLeap: v,
     isTerm: e,
-    isHoliday: w,
-    outStr: w ? U[t + "." + a] || O[n + "." + i] : e ? u : H(i) === "初一" ? (D && h === n ? "闰" : "") + W(n) : H(i)
+    isHoliday: p,
+    outStr: p ? G[t + "." + a] || W[n + "." + i] : e ? u : A(i) === "初一" ? (v && g === n ? "闰" : "") + P(n) : A(i)
   };
 };
-const x0 = { class: "vue-shop-calendar-plus" }, r0 = { class: "calendar-top" }, o0 = { class: "middle-msg" }, u0 = { class: "calendar-center" }, i0 = { class: "calendar-bottom" }, D0 = ["onClick"], y0 = { class: "item-tit" }, v0 = {
+const x0 = {
+  key: 0,
+  class: "calendar-top"
+}, o0 = { class: "middle-msg" }, r0 = { class: "calendar-center" }, u0 = { class: "calendar-bottom" }, i0 = ["onClick"], y0 = { class: "item-tit" }, D0 = {
   key: 1,
   class: "work-txt"
-}, g0 = {
+}, v0 = {
   key: 2,
   class: "rest-txt"
-}, h0 = { class: "item-div-content" }, m0 = {
+}, m0 = {
+  key: 0,
+  class: "item-div-content"
+}, g0 = {
   __name: "index",
   props: {
     // 绑定当前时间
     modelValue: {
       type: String,
       default: ""
+    },
+    // 受控模式
+    control: {
+      type: Boolean,
+      default: !1
+    },
+    // 简易模式
+    simple: {
+      type: Boolean,
+      default: !1
     },
     // 开启国际化
     i18n: {
@@ -598,12 +614,12 @@ const x0 = { class: "vue-shop-calendar-plus" }, r0 = { class: "calendar-top" }, 
       diyDayDayKey: a.props.diyDayDayKey || "day",
       diyDayDesKey: a.props.diyDayDesKey || "des"
     });
-    let o = $([]), x = $([]), l = $({
+    let o = $([]), r = $([]), d = $({
       year: "",
       month: "",
       valFullTime: ""
     });
-    const h = $(42), D = (d) => d % 4 === 0 ? d % 100 === 0 ? d % 400 === 0 : !0 : !1, n = (d, c) => {
+    const g = $(42), v = (l) => l % 4 === 0 ? l % 100 === 0 ? l % 400 === 0 : !0 : !1, n = (l, c) => {
       switch (c) {
         case 1:
         case 3:
@@ -614,15 +630,15 @@ const x0 = { class: "vue-shop-calendar-plus" }, r0 = { class: "calendar-top" }, 
         case 12:
           return 31;
         case 2:
-          return D(d) ? 29 : 28;
+          return v(l) ? 29 : 28;
         case 4:
         case 6:
         case 9:
         case 11:
           return 30;
       }
-    }, i = (d) => {
-      const c = new Date(d);
+    }, i = (l) => {
+      const c = new Date(l);
       return {
         year: c.getFullYear(),
         month: c.getMonth() + 1,
@@ -634,117 +650,125 @@ const x0 = { class: "vue-shop-calendar-plus" }, r0 = { class: "calendar-top" }, 
         solarData: n0(c.getFullYear(), c.getMonth() + 1, c.getDate())
       };
     }, Y = () => {
-      const d = a.i18n ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] : ["一", "二", "三", "四", "五", "六", "日"];
+      o.value = [];
+      const l = a.i18n ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] : ["一", "二", "三", "四", "五", "六", "日"];
       let c = a.firstDay - 1;
       for (let e = 0; e < 7; e++, c++)
-        c > 6 && (c = 0), o.value.push(d[c]);
-    }, N = (d, c) => {
-      x.value = [];
-      for (let y = 0; y < n(d, c); y++) {
-        let M = i(`${d}-${c}-${y + 1}`);
-        M.inMonth = !0, x.value.push(M);
+        c > 6 && (c = 0), o.value.push(l[c]);
+    }, z = (l, c) => {
+      r.value = [];
+      for (let m = 0; m < n(l, c); m++) {
+        let M = i(`${l}-${c}-${m + 1}`);
+        M.inMonth = !0, r.value.push(M);
       }
-      let e = d, u = c - 1, s = x.value[0].weekDay - a.firstDay;
-      u === 0 && (e = d - 1, u = 12), s < 0 && (s += 7);
-      for (let y = 0; y < s; y++) {
+      let e = l, u = c - 1, s = r.value[0].weekDay - a.firstDay;
+      u === 0 && (e = l - 1, u = 12), s < 0 && (s += 7);
+      for (let m = 0; m < s; m++) {
         let M = i(
-          `${e}-${u}-${n(e, u) - y}`
+          `${e}-${u}-${n(e, u) - m}`
         );
-        x.value.unshift(M);
+        r.value.unshift(M);
       }
-      let k = d, w = c + 1, R = h.value - x.value.length;
-      w === 13 && (k = d + 1, w = 1);
-      for (let y = 0; y < R; y++) {
-        let M = i(`${k}-${w}-${y + 1}`);
-        x.value.push(M);
+      let k = l, p = c + 1, q = g.value - r.value.length;
+      p === 13 && (k = l + 1, p = 1);
+      for (let m = 0; m < q; m++) {
+        let M = i(`${k}-${p}-${m + 1}`);
+        r.value.push(M);
       }
-    }, F = (d) => {
-      (l.value.year !== d.year || l.value.month !== d.month) && N(d.year, d.month), l.value = { ...d }, t("change", d, {
-        startTime: x.value[0].valFullTime,
-        endTime: x.value[h.value - 1].valFullTime
+    }, w = (l) => {
+      (d.value.year !== l.year || d.value.month !== l.month) && z(l.year, l.month), d.value = { ...l }, t("change", l, {
+        startTime: r.value[0].valFullTime,
+        endTime: r.value[g.value - 1].valFullTime
       });
-    }, T = async (d, c) => {
+    }, T = async (l, c) => {
       let e = null;
       if (c === 1)
-        e = { ...d };
+        e = { ...l };
       else {
-        let u = l.value.year, s = l.value.month;
-        s += d, s > 12 ? (s = 1, u += 1) : s < 1 && (s = 12, u -= 1), e = { ...i(`${u}-${s}-1`) };
+        let u = d.value.year, s = d.value.month;
+        s += l, s > 12 ? (s = 1, u += 1) : s < 1 && (s = 12, u -= 1), e = { ...i(`${u}-${s}-1`) };
       }
-      await t("update:modelValue", e.valFullTime), a.modelValue || F(e);
-    }, S = $(i((/* @__PURE__ */ new Date()).toLocaleDateString())), V = Z(() => `${l.value.year}${a.i18n ? "-" : "年"}${l.value.month > 9 ? "" : "0"}${l.value.month}${a.i18n ? "" : "月"}`);
-    return q(
+      await t("update:modelValue", e.valFullTime), a.modelValue || w(e);
+    }, F = $(i((/* @__PURE__ */ new Date()).toLocaleDateString())), I = J(() => `${d.value.year}${a.i18n ? "-" : "年"}${d.value.month > 9 ? "" : "0"}${d.value.month}${a.i18n ? "" : "月"}`);
+    return E(
       () => a.modelValue,
       () => {
-        F(i(a.modelValue));
+        w(i(a.modelValue));
       }
-    ), Y(), a.modelValue ? F(i(a.modelValue)) : T(i((/* @__PURE__ */ new Date()).toLocaleDateString()), 1), (d, c) => (v(), g("div", x0, [
-      m("div", r0, [
-        m("div", {
+    ), E(
+      () => a.i18n,
+      () => {
+        Y();
+      }
+    ), Y(), a.modelValue ? w(i(a.modelValue)) : T(i((/* @__PURE__ */ new Date()).toLocaleDateString()), 1), (l, c) => (y(), D("div", {
+      class: L(["vue-shop-calendar-plus", b.simple ? "is-simple" : "", b.control ? "is-control" : ""])
+    }, [
+      b.control ? C("", !0) : (y(), D("div", x0, [
+        S("div", {
           class: "left-btn",
           onClick: c[0] || (c[0] = (e) => T(-1, 2))
         }, "<"),
-        m("div", o0, [
-          A(p(r(V)) + " ", 1),
-          r(l).fullTime !== r(S).fullTime ? (v(), g("div", {
+        S("div", o0, [
+          O(h(x(I)) + " ", 1),
+          !b.simple && x(d).fullTime !== x(F).fullTime ? (y(), D("div", {
             key: 0,
             class: "other-msg",
-            onClick: c[1] || (c[1] = (e) => T(r(S), 1))
-          }, " 今 ")) : I("", !0)
+            onClick: c[1] || (c[1] = (e) => T(x(F), 1))
+          }, " 今 ")) : C("", !0)
         ]),
-        m("div", {
+        S("div", {
           class: "right-btn",
           onClick: c[2] || (c[2] = (e) => T(1, 2))
         }, ">")
-      ]),
-      m("div", u0, [
-        (v(!0), g(z, null, L(r(o), (e, u) => (v(), g("div", {
+      ])),
+      S("div", r0, [
+        (y(!0), D(B, null, j(x(o), (e, u) => (y(), D("div", {
           class: "item",
           key: u
-        }, p(e), 1))), 128))
+        }, h(e), 1))), 128))
       ]),
-      m("div", i0, [
-        (v(!0), g(z, null, L(r(x), (e, u) => (v(), g("div", {
-          class: B([
+      S("div", u0, [
+        (y(!0), D(B, null, j(x(r), (e, u) => (y(), D("div", {
+          class: L([
             "item",
             e.day < 9 ? "samll-num" : "",
-            e.valFullTime === r(S).valFullTime ? "is-today" : "",
-            e.valFullTime === r(l).valFullTime ? "select" : "",
+            e.valFullTime === x(F).valFullTime ? "is-today" : "",
+            e.valFullTime === x(d).valFullTime ? "select" : "",
             e.weekDay === 6 || e.weekDay === 0 ? "rest" : "",
             e.inMonth ? "" : "not-in-month"
           ]),
           key: u,
-          onClick: (s) => e.valFullTime === r(l).valFullTime ? null : T(e, 1)
+          onClick: (s) => b.control || e.valFullTime === x(d).valFullTime ? null : T(e, 1)
         }, [
-          m("div", y0, [
-            A(p(e.day) + " ", 1),
-            b.hidSolar ? I("", !0) : (v(), g("div", {
+          S("div", y0, [
+            O(h(b.simple && !b.control && e.valFullTime === x(F).valFullTime ? "今" : e.day) + " ", 1),
+            !b.simple && !b.hidSolar ? (y(), D("div", {
               key: 0,
-              class: B(["solar-day", e.solarData.isHoliday ? "else" : ""])
-            }, p(e.solarData.outStr), 3)),
-            (r(f).workDayKey ? b.workDay.findIndex((s) => s[r(f).workDayKey] === e.valFullTime) !== -1 : b.workDay.indexOf(e.valFullTime) !== -1) ? (v(), g("div", v0, p(b.i18n ? "work" : "班"), 1)) : I("", !0),
-            (r(f).restDayKey ? b.restDay.findIndex((s) => s[r(f).restDayKey] === e.valFullTime) !== -1 : b.restDay.indexOf(e.valFullTime) !== -1) ? (v(), g("div", g0, p(b.i18n ? "rest" : "休"), 1)) : I("", !0)
+              class: L(["solar-day", e.solarData.isHoliday ? "else" : ""])
+            }, h(e.solarData.outStr), 3)) : C("", !0),
+            !b.simple && (x(f).workDayKey ? b.workDay.findIndex((s) => s[x(f).workDayKey] === e.valFullTime) !== -1 : b.workDay.indexOf(e.valFullTime) !== -1) ? (y(), D("div", D0, h(b.i18n ? "work" : "班"), 1)) : C("", !0),
+            !b.simple && (x(f).restDayKey ? b.restDay.findIndex((s) => s[x(f).restDayKey] === e.valFullTime) !== -1 : b.restDay.indexOf(e.valFullTime) !== -1) ? (y(), D("div", v0, h(b.i18n ? "rest" : "休"), 1)) : C("", !0)
           ]),
-          m("div", h0, [
-            J(d.$slots, "dateCell", {
+          b.simple ? C("", !0) : (y(), D("div", m0, [
+            Q(l.$slots, "dateCell", {
               date: e,
               data: {
-                isToday: e.valFullTime === r(S).valFullTime,
-                isSelected: e.valFullTime === r(l).valFullTime,
+                isToday: e.valFullTime === x(F).valFullTime,
+                isSelected: e.valFullTime === x(d).valFullTime,
                 isRest: e.weekDay === 6 || e.weekDay === 0,
                 isInMonth: e.inMonth
               }
             }, () => [
-              (v(!0), g(z, null, L(b.diyDay.filter((s) => s[r(f).diyDayDayKey] === e.valFullTime), (s, k) => (v(), g("div", { key: k }, p(k + 1) + ". " + p(s[r(f).diyDayDesKey]), 1))), 128))
+              (y(!0), D(B, null, j(b.diyDay.filter((s) => s[x(f).diyDayDayKey] === e.valFullTime), (s, k) => (y(), D("div", { key: k }, h(k + 1) + ". " + h(s[x(f).diyDayDesKey]), 1))), 128))
             ])
-          ])
-        ], 10, D0))), 128))
+          ]))
+        ], 10, i0))), 128))
       ])
-    ]));
+    ], 2));
   }
-}, p0 = [m0], T0 = {
+}, h0 = [g0], T0 = {
   install(b) {
-    p0.forEach((t) => {
+    h0.forEach((t) => {
       b.component("vueShopCalendarPlus", t);
     });
   }

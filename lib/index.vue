@@ -4,18 +4,18 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-07-28 17:48:58
+ * @LastEditTime: 2023-09-22 10:15:40
 */
 <template>
-  <div class="vue-shop-calendar-plus">
+  <div :class="['vue-shop-calendar-plus', simple ? 'is-simple' : '', control ? 'is-control' : '']">
     <!-- 顶部操作区域 -->
-    <div class="calendar-top">
+    <div class="calendar-top" v-if="!control">
       <!-- 上月 -->
       <div class="left-btn" @click="changeTime(-1, 2)">&lt;</div>
       <!-- 当前展示月 -->
       <div class="middle-msg">
         {{ topMiddle }}
-        <div class="other-msg" v-if="selectDay.fullTime !== today.fullTime" @click="changeTime(today, 1)">
+        <div class="other-msg" v-if="!simple && selectDay.fullTime !== today.fullTime" @click="changeTime(today, 1)">
           今
         </div>
       </div>
@@ -38,35 +38,27 @@
         item.weekDay === 6 || item.weekDay === 0 ? 'rest' : '',
         item.inMonth ? '' : 'not-in-month',
       ]" v-for="(item, index) in monthData" :key="index" @click="
-  item.valFullTime === selectDay.valFullTime
+  control || item.valFullTime === selectDay.valFullTime
     ? null
     : changeTime(item, 1)
   ">
         <div class="item-tit">
-          {{ item.day }}
-          <div :class="['solar-day', item.solarData.isHoliday ? 'else' : '']" v-if="!hidSolar">
+          {{ simple && !control && item.valFullTime === today.valFullTime ? '今' : item.day }}
+          <div :class="['solar-day', item.solarData.isHoliday ? 'else' : '']" v-if="!simple && !hidSolar">
             {{ item.solarData.outStr }}
           </div>
           <!-- 加班日标记 -->
-          <div class="work-txt" v-if="nameSet.workDayKey
-            ? workDay.findIndex((one) => {
-              return one[nameSet.workDayKey] === item.valFullTime;
-            }) !== -1
-            : workDay.indexOf(item.valFullTime) !== -1
-            ">
+          <div class="work-txt"
+            v-if="!simple && (nameSet.workDayKey ? workDay.findIndex(one => one[nameSet.workDayKey] === item.valFullTime) !== -1 : workDay.indexOf(item.valFullTime) !== -1)">
             {{ i18n ? "work" : "班" }}
           </div>
           <!-- 休息日标记 -->
-          <div class="rest-txt" v-if="nameSet.restDayKey
-            ? restDay.findIndex((one) => {
-              return one[nameSet.restDayKey] === item.valFullTime;
-            }) !== -1
-            : restDay.indexOf(item.valFullTime) !== -1
-            ">
+          <div class="rest-txt"
+            v-if="!simple && (nameSet.restDayKey ? restDay.findIndex(one => one[nameSet.restDayKey] === item.valFullTime) !== -1 : restDay.indexOf(item.valFullTime) !== -1)">
             {{ i18n ? "rest" : "休" }}
           </div>
         </div>
-        <div class="item-div-content">
+        <div class="item-div-content" v-if="!simple">
           <slot name="dateCell" :date="item" :data="{
             isToday: item.valFullTime === today.valFullTime,
             isSelected: item.valFullTime === selectDay.valFullTime,
@@ -93,6 +85,16 @@ const props = defineProps({
   modelValue: {
     type: String,
     default: "",
+  },
+  // 受控模式
+  control: {
+    type: Boolean,
+    default: false,
+  },
+  // 简易模式
+  simple: {
+    type: Boolean,
+    default: false,
   },
   // 开启国际化
   i18n: {
@@ -206,6 +208,7 @@ const dealOneDay = (time) => {
 };
 // 获取周头排序
 const getWeek = () => {
+  weekList.value = [];
   // 标准时间
   const standWeek = props.i18n
     ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -317,6 +320,12 @@ watch(
   () => {
     console.log("绑定值改变");
     checkTime(dealOneDay(props.modelValue));
+  }
+);
+watch(
+  () => props.i18n,
+  () => {
+    getWeek();
   }
 );
 getWeek();

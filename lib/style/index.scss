@@ -4,24 +4,96 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-07-28 17:44:49
+ * @LastEditTime: 2023-09-22 10:13:05
 */
 .vue-shop-calendar-plus {
-  --top-active-color    : #db3218;
-  --border-color        : #ebeef5;
-  --out-width           : 90%;
-  --item-height         : 85px;
-  --item-active-bg-color: #d7e8f8;
-  --today-color         : #b31552;
-  --rest-clor           : #f39f03;
-  --rest-dis-clor       : #fed891;
-  --dis-color           : #c0c4cc;
-  --diy-work-color      : #f30a0a;
-  --diy-rest-color      : #26c629;
-  --holiday-color       : #b513e7;
-  --holiday-dis-color   : #b613e74e;
-  width                 : var(--out-width);
-  margin                : 0 auto;
+  --top-active-color      : #db3218;
+  --border-color          : #ebeef5;
+  --border-color-s        : transparent;
+  --out-width             : 90%;
+  --out-width-s           : 100%;
+  --item-height           : 85px;
+  --item-height-s         : 22px;
+  --item-active-bg-color  : #d7e8f8;
+  --item-active-bg-color-s: #0068FF;
+  --today-color           : #b31552;
+  --rest-clor             : #f39f03;
+  --rest-dis-clor         : #fed891;
+  --dis-color             : #c0c4cc;
+  --diy-work-color        : #f30a0a;
+  --diy-rest-color        : #26c629;
+  --holiday-color         : #b513e7;
+  --holiday-dis-color     : #b613e74e;
+  width                   : var(--out-width);
+  margin                  : 0 auto;
+
+  &.is-simple {
+    width: var(--out-width-s);
+
+    .calendar-top {
+      font-size: 14px;
+    }
+
+    .calendar-center {
+      font-size: 12px;
+      margin   : 8px 0;
+    }
+
+    .calendar-bottom {
+      border-top : 1px solid var(--border-color-s);
+      border-left: 1px solid var(--border-color-s);
+
+      .item {
+        height         : var(--item-height-s);
+        border-bottom  : 1px solid var(--border-color-s);
+        border-right   : 1px solid var(--border-color-s);
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
+        padding        : 0;
+
+        &.select,
+        &:hover {
+          background-color: transparent;
+
+          .item-tit {
+            background-color: var(--item-active-bg-color-s);
+            color           : #fff;
+          }
+        }
+
+        .item-tit {
+          justify-content: center;
+          width          : 18px;
+          height         : 18px;
+          border-radius  : 50%;
+          line-height    : 1;
+          font-size      : 12px;
+
+          &::before {
+            content: none !important;
+          }
+        }
+      }
+    }
+  }
+
+  &.is-control {
+    .calendar-bottom {
+      .item {
+        cursor        : default;
+        pointer-events: none;
+
+        &:hover {
+          background-color: transparent;
+
+          .item-tit {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
 
   // 顶部操作区域
   .calendar-top {
@@ -30,6 +102,7 @@
     align-items    : center;
     font-size      : 18px;
     padding        : 0 10px;
+    height         : 24px;
 
     .left-btn,
     .right-btn {
@@ -41,7 +114,9 @@
     }
 
     .middle-msg {
-      position: relative;
+      position   : relative;
+      line-height: 1;
+      font-weight: bold;
 
       .other-msg {
         width        : 14px;
@@ -54,6 +129,7 @@
         font-size    : 12px;
         border       : 1px solid #000;
         border-radius: 50%;
+        font-weight  : normal;
         cursor       : pointer;
 
         &:hover {
@@ -67,13 +143,16 @@
   // 日历头部星期
   .calendar-center {
     display    : flex;
-    padding    : 12px 0;
+    margin     : 12px 0;
     color      : #606266;
     font-weight: 400;
+    height     : 16px;
 
     .item {
-      text-align: center;
-      width     : calc(100% / 7);
+      width          : calc(100% / 7);
+      display        : flex;
+      align-items    : center;
+      justify-content: center;
     }
   }
 
