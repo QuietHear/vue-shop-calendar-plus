@@ -4,14 +4,16 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-09-22 10:15:40
+ * @LastEditTime: 2024-01-26 16:26:14
 */
 <template>
   <div :class="['vue-shop-calendar-plus', simple ? 'is-simple' : '', control ? 'is-control' : '']">
     <!-- 顶部操作区域 -->
     <div class="calendar-top" v-if="!control">
       <!-- 上月 -->
-      <div class="left-btn" @click="changeTime(-1, 2)">&lt;</div>
+      <div class="left-btn" @click="changeTime(-1, 2)">
+        <Icon :iconObj="prevMonthIcon" v-if="prevMonthIcon && (prevMonthIcon.icon || prevMonthIcon.type)" />
+      </div>
       <!-- 当前展示月 -->
       <div class="middle-msg">
         {{ topMiddle }}
@@ -20,7 +22,9 @@
         </div>
       </div>
       <!-- 下月 -->
-      <div class="right-btn" @click="changeTime(1, 2)">&gt;</div>
+      <div class="right-btn" @click="changeTime(1, 2)">
+        <Icon :iconObj="nextMonthIcon" v-if="nextMonthIcon && (nextMonthIcon.icon || nextMonthIcon.type)" />
+      </div>
     </div>
     <!-- 日历头部星期 -->
     <div class="calendar-center">
@@ -78,6 +82,7 @@
   </div>
 </template>
 <script setup>
+import Icon from "./components/icon.vue";
 import solarExchange from "./js/solarExchange";
 const emit = defineEmits(["update:modelValue", "change"]);
 const props = defineProps({
@@ -85,6 +90,24 @@ const props = defineProps({
   modelValue: {
     type: String,
     default: "",
+  },
+  // 上一月图标
+  prevMonthIcon: {
+    type: Object,
+    default: () => {
+      return {
+        icon: "<"
+      };
+    },
+  },
+  // 下一月图标
+  nextMonthIcon: {
+    type: Object,
+    default: () => {
+      return {
+        icon: ">"
+      };
+    },
   },
   // 受控模式
   control: {

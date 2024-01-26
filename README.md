@@ -53,6 +53,26 @@
 ## 1. 参数
 * `v-model`：绑定当前时间-->String;非必传;默认*''*
 
+* `prevMonthIcon`：关闭图标-->Object;非必传;默认*{icon:'<'}*
+>
+	attrs的值会v-bind到对应dom上
+	type的值，有以下四种情况
+	// custom，此时为自定义组件,icon为组件名（！！！未内置，确保当前页面或全局已引入）
+	// el，此时为el-icon,icon为图标组件名（！！！未内置，确保当前页面或全局已引入）
+	// iconfont，此时为iconfont，icon为图标去掉icon-后部分（！！！未内置，确保当前页面或全局已引入）
+	// 其他，此时为本地自定义图标，type为class，icon为内容
+>
+
+* `nextMonthIcon`：关闭图标-->Object;非必传;默认*{icon:'>'}>*
+>
+	attrs的值会v-bind到对应dom上
+	type的值，有以下四种情况
+	// custom，此时为自定义组件,icon为组件名（！！！未内置，确保当前页面或全局已引入）
+	// el，此时为el-icon,icon为图标组件名（！！！未内置，确保当前页面或全局已引入）
+	// iconfont，此时为iconfont，icon为图标去掉icon-后部分（！！！未内置，确保当前页面或全局已引入）
+	// 其他，此时为本地自定义图标，type为class，icon为内容
+>
+
 * `control`：受控模式-->Boolean;非必传;默认*false*
 
 * `simple`：简易模式-->Boolean;非必传;默认*false*
