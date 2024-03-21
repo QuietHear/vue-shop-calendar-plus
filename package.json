@@ -1,7 +1,7 @@
 {
   "name": "vue-shop-calendar-plus",
-  "description": "工作日历 vue3版",
-  "version": "1.2.1",
+  "description": "工作日历 vue3版组件",
+  "version": "1.2.2",
   "author": "aFei <1106728884@qq.com>",
   "license": "MIT",
   "main": "dist/vue-shop-calendar-plus.umd.js",
