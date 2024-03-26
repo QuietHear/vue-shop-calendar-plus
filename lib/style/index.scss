@@ -4,7 +4,7 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-09-22 10:13:05
+ * @LastEditTime: 2024-03-26 10:29:20
 */
 .vue-shop-calendar-plus {
   --top-active-color      : #db3218;
@@ -131,6 +131,7 @@
         border-radius: 50%;
         font-weight  : normal;
         cursor       : pointer;
+        text-align   : center;
 
         &:hover {
           color       : var(--top-active-color);

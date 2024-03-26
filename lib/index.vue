@@ -1,10 +1,10 @@
 /*
- * @Author: aFei
- * @Date: 2022-11-17 14:27:47
+* @Author: aFei
+* @Date: 2022-11-17 14:27:47
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2024-01-26 16:26:14
+ * @LastEditTime: 2024-03-26 10:28:06
 */
 <template>
   <div :class="['vue-shop-calendar-plus', simple ? 'is-simple' : '', control ? 'is-control' : '']">
@@ -18,7 +18,7 @@
       <div class="middle-msg">
         {{ topMiddle }}
         <div class="other-msg" v-if="!simple && selectDay.fullTime !== today.fullTime" @click="changeTime(today, 1)">
-          今
+          {{ i18n ? "N" : "今" }}
         </div>
       </div>
       <!-- 下月 -->
@@ -35,19 +35,19 @@
     <!-- 日历底部日子 -->
     <div class="calendar-bottom">
       <div :class="[
-        'item',
-        item.day < 9 ? 'samll-num' : '',
-        item.valFullTime === today.valFullTime ? 'is-today' : '',
-        item.valFullTime === selectDay.valFullTime ? 'select' : '',
-        item.weekDay === 6 || item.weekDay === 0 ? 'rest' : '',
-        item.inMonth ? '' : 'not-in-month',
-      ]" v-for="(item, index) in monthData" :key="index" @click="
-  control || item.valFullTime === selectDay.valFullTime
-    ? null
-    : changeTime(item, 1)
-  ">
+    'item',
+    item.day < 9 ? 'samll-num' : '',
+    item.valFullTime === today.valFullTime ? 'is-today' : '',
+    item.valFullTime === selectDay.valFullTime ? 'select' : '',
+    item.weekDay === 6 || item.weekDay === 0 ? 'rest' : '',
+    item.inMonth ? '' : 'not-in-month',
+  ]" v-for="(item, index) in monthData" :key="index" @click="
+    control || item.valFullTime === selectDay.valFullTime
+      ? null
+      : changeTime(item, 1)
+    ">
         <div class="item-tit">
-          {{ simple && !control && item.valFullTime === today.valFullTime ? '今' : item.day }}
+          {{ simple && !control && item.valFullTime === today.valFullTime ? (i18n ? "N" : "今") : item.day }}
           <div :class="['solar-day', item.solarData.isHoliday ? 'else' : '']" v-if="!simple && !hidSolar">
             {{ item.solarData.outStr }}
           </div>
@@ -64,15 +64,15 @@
         </div>
         <div class="item-div-content" v-if="!simple">
           <slot name="dateCell" :date="item" :data="{
-            isToday: item.valFullTime === today.valFullTime,
-            isSelected: item.valFullTime === selectDay.valFullTime,
-            isRest: item.weekDay === 6 || item.weekDay === 0,
-            isInMonth: item.inMonth,
-          }">
+    isToday: item.valFullTime === today.valFullTime,
+    isSelected: item.valFullTime === selectDay.valFullTime,
+    isRest: item.weekDay === 6 || item.weekDay === 0,
+    isInMonth: item.inMonth,
+  }">
             <!-- 自定义节日 -->
             <div v-for="(one, oneIndex) in diyDay.filter((it) => {
-              return it[nameSet.diyDayDayKey] === item.valFullTime;
-            })" :key="oneIndex">
+    return it[nameSet.diyDayDayKey] === item.valFullTime;
+  })" :key="oneIndex">
               {{ oneIndex + 1 }}. {{ one[nameSet.diyDayDesKey] }}
             </div>
           </slot>
