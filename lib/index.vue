@@ -4,7 +4,7 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2024-03-26 10:28:06
+ * @LastEditTime: 2024-08-09 10:54:55
 */
 <template>
   <div :class="['vue-shop-calendar-plus', simple ? 'is-simple' : '', control ? 'is-control' : '']">
@@ -35,13 +35,13 @@
     <!-- 日历底部日子 -->
     <div class="calendar-bottom">
       <div :class="[
-    'item',
-    item.day < 9 ? 'samll-num' : '',
-    item.valFullTime === today.valFullTime ? 'is-today' : '',
-    item.valFullTime === selectDay.valFullTime ? 'select' : '',
-    item.weekDay === 6 || item.weekDay === 0 ? 'rest' : '',
-    item.inMonth ? '' : 'not-in-month',
-  ]" v-for="(item, index) in monthData" :key="index" @click="
+        'item',
+        item.day < 9 ? 'samll-num' : '',
+        item.valFullTime === today.valFullTime ? 'is-today' : '',
+        item.valFullTime === selectDay.valFullTime ? 'select' : '',
+        item.weekDay === 6 || item.weekDay === 0 ? 'rest' : '',
+        item.inMonth ? '' : 'not-in-month',
+      ]" v-for="(item, index) in monthData" :key="index" @click="
     control || item.valFullTime === selectDay.valFullTime
       ? null
       : changeTime(item, 1)
@@ -64,15 +64,15 @@
         </div>
         <div class="item-div-content" v-if="!simple">
           <slot name="dateCell" :date="item" :data="{
-    isToday: item.valFullTime === today.valFullTime,
-    isSelected: item.valFullTime === selectDay.valFullTime,
-    isRest: item.weekDay === 6 || item.weekDay === 0,
-    isInMonth: item.inMonth,
-  }">
+            isToday: item.valFullTime === today.valFullTime,
+            isSelected: item.valFullTime === selectDay.valFullTime,
+            isRest: item.weekDay === 6 || item.weekDay === 0,
+            isInMonth: item.inMonth,
+          }">
             <!-- 自定义节日 -->
             <div v-for="(one, oneIndex) in diyDay.filter((it) => {
-    return it[nameSet.diyDayDayKey] === item.valFullTime;
-  })" :key="oneIndex">
+              return it[nameSet.diyDayDayKey] === item.valFullTime;
+            })" :key="oneIndex">
               {{ oneIndex + 1 }}. {{ one[nameSet.diyDayDesKey] }}
             </div>
           </slot>
@@ -128,6 +128,9 @@ const props = defineProps({
   firstDay: {
     type: Number,
     default: 1,
+    validator(value, props) {
+      return value >= 1 && value <= 7;
+    }
   },
   // 特殊日期键值配置
   props: {

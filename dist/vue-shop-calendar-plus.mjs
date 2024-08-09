@@ -1,4 +1,4 @@
-import { resolveComponent as e0, openBlock as s, createBlock as p, resolveDynamicComponent as P, normalizeProps as U, mergeProps as V, withCtx as c0, createElementBlock as y, toDisplayString as g, ref as S, computed as f0, watch as W, normalizeClass as L, createElementVNode as I, createCommentVNode as k, createTextVNode as q, unref as x, Fragment as B, renderList as H, renderSlot as a0 } from "vue";
+import { resolveComponent as e0, openBlock as s, createBlock as C, resolveDynamicComponent as P, normalizeProps as U, mergeProps as V, withCtx as c0, createElementBlock as y, toDisplayString as g, ref as S, computed as f0, watch as W, normalizeClass as L, createElementVNode as I, createCommentVNode as k, createTextVNode as q, unref as x, Fragment as B, renderList as H, renderSlot as a0 } from "vue";
 const G = {
   __name: "icon",
   props: {
@@ -10,9 +10,9 @@ const G = {
   setup(b) {
     return (t, a) => {
       const c = e0("el-icon");
-      return b.iconObj.type === "custom" ? (s(), p(P(b.iconObj.icon), U(V({ key: 0 }, b.iconObj.attrs)), null, 16)) : b.iconObj.type === "el" ? (s(), p(c, U(V({ key: 1 }, b.iconObj.attrs)), {
+      return b.iconObj.type === "custom" ? (s(), C(P(b.iconObj.icon), U(V({ key: 0 }, b.iconObj.attrs)), null, 16)) : b.iconObj.type === "el" ? (s(), C(c, U(V({ key: 1 }, b.iconObj.attrs)), {
         default: c0(() => [
-          (s(), p(P(b.iconObj.icon)))
+          (s(), C(P(b.iconObj.icon)))
         ]),
         _: 1
       }, 16)) : b.iconObj.type === "iconfont" ? (s(), y("i", V({
@@ -470,7 +470,7 @@ const G = {
   for (let a = 32768; a > 8; a >>= 1)
     t += N[b - 1900] & a ? 1 : 0;
   return t + X(b);
-}, X = (b) => _(b) ? N[b - 1900] & 65536 ? 30 : 29 : 0, _ = (b) => N[b - 1900] & 15, i0 = (b, t) => t > 12 || t < 1 ? -1 : N[b - 1900] & 65536 >> t ? 30 : 29, C = (b) => l0[b % 10] + n0[b % 12], A = (b, t) => {
+}, X = (b) => _(b) ? N[b - 1900] & 65536 ? 30 : 29 : 0, _ = (b) => N[b - 1900] & 15, i0 = (b, t) => t > 12 || t < 1 ? -1 : N[b - 1900] & 65536 >> t ? 30 : 29, p = (b) => l0[b % 10] + n0[b % 12], A = (b, t) => {
   if (b < 1900 || b > 2100 || t < 1 || t > 24)
     return -1;
   const a = t0[b - 1900], c = [
@@ -542,14 +542,14 @@ const G = {
     h > 0 && o == h + 1 && m == !1 ? (--o, m = !0, i = X(r)) : i = i0(r, o), m == !0 && o == h + 1 && (m = !1), n -= i;
   n == 0 && h > 0 && o == h + 1 && (m ? m = !1 : (m = !0, --o)), n < 0 && (n += i, --o);
   const D = n + 1;
-  let O = t - 1, z = A(b, 3), F = C(b - 4), T = new Date(b, 1, z).getTime();
-  new Date(b, O, a).getTime() < T && (F = C(b - 5));
+  let O = t - 1, z = A(b, 3), F = p(b - 4), T = new Date(b, 1, z).getTime();
+  new Date(b, O, a).getTime() < T && (F = p(b - 5));
   const Y = A(b, t * 2 - 1), l = A(b, t * 2);
-  let f = C((b - 1900) * 12 + t + 11);
-  a >= Y && (f = C((b - 1900) * 12 + t + 12));
+  let f = p((b - 1900) * 12 + t + 11);
+  a >= Y && (f = p((b - 1900) * 12 + t + 12));
   let e = !1, u = "";
   Y == a && (e = !0, u = R[t * 2 - 2]), l == a && (e = !0, u = R[t * 2 - 1]);
-  const d = Date.UTC(b, O, 1, 0, 0, 0, 0) / 864e5 + 25567 + 10, M = C(d + a - 1);
+  const d = Date.UTC(b, O, 1, 0, 0, 0, 0) / 864e5 + 25567 + 10, M = p(d + a - 1);
   let w = !1;
   return (J[t + "." + a] || Z[o + "." + D]) && (w = !0), {
     animal: u0(r),
@@ -617,7 +617,10 @@ const m0 = {
     // 周首日，1-7
     firstDay: {
       type: Number,
-      default: 1
+      default: 1,
+      validator(b, t) {
+        return b >= 1 && b <= 7;
+      }
     },
     // 特殊日期键值配置
     props: {
@@ -747,7 +750,7 @@ const m0 = {
           class: "left-btn",
           onClick: f[0] || (f[0] = (e) => T(-1, 2))
         }, [
-          b.prevMonthIcon && (b.prevMonthIcon.icon || b.prevMonthIcon.type) ? (s(), p(G, {
+          b.prevMonthIcon && (b.prevMonthIcon.icon || b.prevMonthIcon.type) ? (s(), C(G, {
             key: 0,
             iconObj: b.prevMonthIcon
           }, null, 8, ["iconObj"])) : k("", !0)
@@ -764,7 +767,7 @@ const m0 = {
           class: "right-btn",
           onClick: f[2] || (f[2] = (e) => T(1, 2))
         }, [
-          b.nextMonthIcon && (b.nextMonthIcon.icon || b.nextMonthIcon.type) ? (s(), p(G, {
+          b.nextMonthIcon && (b.nextMonthIcon.icon || b.nextMonthIcon.type) ? (s(), C(G, {
             key: 0,
             iconObj: b.nextMonthIcon
           }, null, 8, ["iconObj"])) : k("", !0)

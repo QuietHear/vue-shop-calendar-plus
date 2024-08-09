@@ -1,7 +1,7 @@
 {
   "name": "vue-shop-calendar-plus",
   "description": "工作日历 vue3版组件",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "author": "aFei <1106728884@qq.com>",
   "license": "MIT",
   "main": "dist/vue-shop-calendar-plus.umd.js",
@@ -27,11 +27,11 @@
   "repository": "https://github.com/QuietHear/vue-shop-calendar-plus",
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
-    "element-plus": "^2.6.1",
-    "sass": "^1.63.4",
-    "unplugin-auto-import": "^0.16.4",
+    "element-plus": "^2.7.8",
+    "sass": "^1.77.8",
+    "unplugin-auto-import": "^0.18.2",
     "vite": "^4.3.9",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "vue-router": "^4.4.3"
   }
 }
